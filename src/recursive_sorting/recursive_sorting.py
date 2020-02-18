@@ -56,14 +56,41 @@ def merge_sort(arr):
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
-    # TO-DO
+    # Create mid point for the end
+    start2 = mid + 1
 
-    return arr
+    # Return if array is already sorted
+    if arr[mid] <= arr[start2]:
+        return
+
+    # Merge the sorted lists
+    while start <= mid and start2 <= end:
+        # If sorted iterate and continue
+        if arr[start] < arr[start2]:
+            start += 1
+        else:
+            value = arr[start2]
+            index = start2
+
+            while index != start:
+                arr[index] = arr[index - 1]
+                index -= 1
+
+            arr[start] = value
+
+            # Update the pointers
+            start += 1
+            mid += 1
+            start2 += 1
 
 
 def merge_sort_in_place(arr, l, r):
-    # TO-DO
+    if l < r:
+        m = l + (r - l) // 2
+        merge_sort_in_place(arr, l, m)
+        merge_sort_in_place(arr, m + 1, r)
 
+        merge_in_place(arr, l, m, r)
     return arr
 
 
