@@ -29,12 +29,20 @@ def bubble_sort(arr):
 
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
+    # Check if entered array is empty
     if len(arr) == 0:
+        # If true, also return empty array
         return []
+    # Check if the smallest value is negative
     if min(arr) < 0:
+        # If trye, return error message
         return 'Error, negative numbers not allowed in Count Sort'
-    maximum = max(arr)
-    # Create array with integer values from 0 to the max
+
+    # If the maximum is entered, use that value instead
+    if maximum == -1:
+        maximum = max(arr)
+
+    # Create array with integer key values from 0 to the max
     elements = maximum + 1
     count_array = [0] * elements
 
